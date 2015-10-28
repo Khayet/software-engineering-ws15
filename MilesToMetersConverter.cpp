@@ -2,7 +2,7 @@
 
 #include <string>
 
-double MilesToMetersonverter::convert(double inputMiles){
+double MilesToMetersConverter::convert(double inputMiles){
   return inputMiles*1609.344;
 }
 
