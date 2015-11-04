@@ -7,7 +7,7 @@ double MilesToMetersConverter::convert(double inputMiles){
 }
 
 std::string MilesToMetersConverter::toString() const{
-  return "Miles to Meters Converter";
+  return "Miles to Meters UnitConverter";
 }
 
 void MilesToMetersConverter::print() const{

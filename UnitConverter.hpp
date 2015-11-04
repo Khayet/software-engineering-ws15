@@ -1,10 +1,10 @@
-#ifndef CONVERTER_H
-#define CONVERTER_H
+#ifndef UNITCONVERTER_H
+#define UNITCONVERTER_H
 
 #include <iostream>
 #include <string>
 
-class Converter
+class UnitConverter
 {
   public:
     virtual double convert(double inValue) = 0;
@@ -12,4 +12,4 @@ class Converter
     virtual void print() const = 0;
 };
 
-#endif // CONVERTER_H
+#endif // UNITCONVERTER_H

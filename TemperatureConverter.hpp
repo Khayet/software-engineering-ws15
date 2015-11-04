@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <string>
-#include "Converter.hpp"
+#include "UnitConverter.hpp"
 
-class TemperatureConverter : public Converter
+class TemperatureConverter : public UnitConverter
 {
   public:
     virtual double convert(double inValue) = 0;
