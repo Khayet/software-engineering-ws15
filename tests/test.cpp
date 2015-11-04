@@ -1,17 +1,75 @@
 #include "tinytest.h"
 #include "../DollarToEuroConverter.hpp"
+#include "../EuroToDollarConverter.hpp"
+#include <iostream>
 
-int testDollarToEuro()
+//Kurs 0.91
+int testDollarToEuro01()
 {
     DollarToEuroConverter decon{};
-    TINYTEST_ASSERT(decon.convert(1000) == 910);
+    TINYTEST_EQUAL_EPSILON(decon.convert(1000.0), 910.0);
+    TINYTEST_EQUAL_EPSILON(decon.convert(4.0), 3.64);
+    TINYTEST_EQUAL_EPSILON(decon.convert(674.0), 613.34);
+
+    return 1;
+}
+
+int testDollarToEuro02()
+{
+    DollarToEuroConverter decon{};
+    TINYTEST_EQUAL_EPSILON(decon.convert(777), 707.07);
+    TINYTEST_EQUAL_EPSILON(decon.convert(0.2), 0.182);
+    TINYTEST_EQUAL_EPSILON(decon.convert(261.551), 238.01141);
+
+    return 1;
+}
+
+int testDollarToEuro03()
+{
+    DollarToEuroConverter decon{};
+    TINYTEST_EQUAL_EPSILON(decon.convert(0.0), 0.0);
+    TINYTEST_EQUAL_EPSILON(decon.convert(1.0), 0.91);
+    TINYTEST_EQUAL_EPSILON(decon.convert(-1.0), -0.91);
+
+    return 1;
+}
+
+//Kurs 1.09
+int testEuroToDollar01()
+{
+    EuroToDollarConverter eucon{};
+    TINYTEST_EQUAL_EPSILON(eucon.convert(10), 10.9);
+    TINYTEST_EQUAL_EPSILON(eucon.convert(55), 59.95);
+    TINYTEST_EQUAL_EPSILON(eucon.convert(284), 309.56);
+
+    return 1;
+}
+
+int testEuroToDollar02()
+{
+    EuroToDollarConverter eucon{};
+    TINYTEST_EQUAL_EPSILON(eucon.convert(0.55), 0.5995);
+    TINYTEST_EQUAL_EPSILON(eucon.convert(1.09), 1.1881);
+    TINYTEST_EQUAL_EPSILON(eucon.convert(18.72), 20.4048);
+
+    return 1;
+}
+
+int testEuroToDollar03()
+{
+    EuroToDollarConverter eucon{};
+    TINYTEST_EQUAL_EPSILON(eucon.convert(0.0), 0.0);
+    TINYTEST_EQUAL_EPSILON(eucon.convert(1.0), 1.09);
+    TINYTEST_EQUAL_EPSILON(eucon.convert(-1.0), -1.09);
 
     return 1;
 }
 
 TINYTEST_START_SUITE(Convert);
 
-TINYTEST_ADD_TEST(testDollarToEuro);
+TINYTEST_ADD_TEST(testDollarToEuro01);
+TINYTEST_ADD_TEST(testDollarToEuro02);
+TINYTEST_ADD_TEST(testDollarToEuro03);
 
 TINYTEST_END_SUITE();
 
