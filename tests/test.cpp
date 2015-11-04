@@ -1,6 +1,10 @@
 #include "tinytest.h"
 #include "../DollarToEuroConverter.hpp"
 #include "../EuroToDollarConverter.hpp"
+#include "../MilesToMetersConverter.hpp"
+#include "../MetersToMilesConverter.hpp"
+#include "../FahrenheitToCelsiusConverter.hpp"
+#include "../CelsiusToFahrenheitConverter.hpp"
 #include <iostream>
 
 //Kurs 0.91
@@ -65,6 +69,69 @@ int testEuroToDollar03()
     return 1;
 }
 
+int milesToMeters01() 
+{
+  //conversion rate: 1:1609.34
+  MilesToMetersConverter micon01;
+  TINYTEST_EQUAL_EPSILON(micon01.convert(1.0), 1609.34);
+  TINYTEST_EQUAL_EPSILON(micon01.convert(6475), 1.0421*10000000);
+  TINYTEST_EQUAL_EPSILON(micon01.convert(22), 35405.6);
+
+  return 1;
+}
+
+int milesToMeters02()
+{
+  MilesToMetersConverter micon02;
+  TINYTEST_EQUAL_EPSILON(micon02.convert(-1.0), -1609.34);
+  TINYTEST_EQUAL_EPSILON(micon02.convert(-0.0), 0.0);
+  TINYTEST_EQUAL_EPSILON(micon02.convert(-6475), -1.0421*10000000);
+
+  return 1;
+}
+
+int milesToMeters03()
+{
+  MilesToMetersConverter micon03;
+  TINYTEST_EQUAL_EPSILON(micon03.convert(2), 3218.69);
+  TINYTEST_EQUAL_EPSILON(micon03.convert(31), 49889.7);
+  TINYTEST_EQUAL_EPSILON(micon03.convert(0), 0.0);
+
+
+  return 1;
+}
+
+int metersToMiles01() 
+{
+  //covnersion rate: 1:0.000621371
+  MetersToMilesConverter mecon01;
+  TINYTEST_EQUAL_EPSILON(mecon01.convert(1), 0.000621371);
+  TINYTEST_EQUAL_EPSILON(mecon01.convert(10000000), 6213.711922);
+  TINYTEST_EQUAL_EPSILON(mecon01.convert(0.0), 0.0);
+
+  return 1;
+}
+
+int metersToMiles02() 
+{
+  MetersToMilesConverter mecon02;
+  TINYTEST_EQUAL_EPSILON(mecon02.convert(-1.0), -0.000621371);
+  TINYTEST_EQUAL_EPSILON(mecon02.convert(-10000000), -6213.711922);
+  TINYTEST_EQUAL_EPSILON(mecon02.convert(-0.0), 0.0);
+
+  return 1;
+}
+
+int metersToMiles03() 
+{
+  MetersToMilesConverter mecon03;
+  TINYTEST_EQUAL_EPSILON(mecon03.convert(22), 0.0136702);
+  TINYTEST_EQUAL_EPSILON(mecon03.convert(1609.34), 1);
+  TINYTEST_EQUAL_EPSILON(mecon03.convert(-1), -0.000621371);
+
+  return 1;
+}
+
 int testFahrenheitToCelsius01()
 {
     FahrenheitToCelsiusConverter fahcon{};
@@ -98,9 +165,9 @@ int testFahrenheitToCelsius03()
 int testCelsiusToFahrenheit01()
 {
     CelsiusToFahrenheitConverter celcon{};
-    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
-    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
-    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
+    TINYTEST_EQUAL_EPSILON(celcon.convert(0), 32);
+    TINYTEST_EQUAL_EPSILON(celcon.convert(-100), -148);
+    TINYTEST_EQUAL_EPSILON(celcon.convert(100), 212);
 
     return 1;
 }
@@ -108,9 +175,9 @@ int testCelsiusToFahrenheit01()
 int testCelsiusToFahrenheit02()
 {
     CelsiusToFahrenheitConverter celcon{};
-    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
-    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
-    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
+    TINYTEST_EQUAL_EPSILON(celcon.convert(-2.2), 28.04);
+    TINYTEST_EQUAL_EPSILON(celcon.convert(66), 150.8);
+    TINYTEST_EQUAL_EPSILON(celcon.convert(-273.15), -459.67);
 
     return 1;
 }
@@ -130,6 +197,23 @@ TINYTEST_START_SUITE(Convert);
 TINYTEST_ADD_TEST(testDollarToEuro01);
 TINYTEST_ADD_TEST(testDollarToEuro02);
 TINYTEST_ADD_TEST(testDollarToEuro03);
+
+TINYTEST_ADD_TEST(milesToMeters01);
+TINYTEST_ADD_TEST(milesToMeters02);
+TINYTEST_ADD_TEST(milesToMeters03);
+
+TINYTEST_ADD_TEST(metersToMiles01);
+TINYTEST_ADD_TEST(metersToMiles02);
+TINYTEST_ADD_TEST(metersToMiles03);
+
+TINYTEST_ADD_TEST(testFahrenheitToCelsius01);
+TINYTEST_ADD_TEST(testFahrenheitToCelsius02);
+TINYTEST_ADD_TEST(testFahrenheitToCelsius03);
+
+TINYTEST_ADD_TEST(testCelsiusToFahrenheit01);
+TINYTEST_ADD_TEST(testCelsiusToFahrenheit02);
+TINYTEST_ADD_TEST(testCelsiusToFahrenheit03);
+
 
 TINYTEST_END_SUITE();
 
