@@ -21,7 +21,7 @@ int testDollarToEuro01()
 int testDollarToEuro02()
 {
     DollarToEuroConverter decon{};
-    TINYTEST_EQUAL_EPSILON(decon.convert(777), 707.07);
+    TINYTEST_EQUAL_EPSILON(decon.convert(777.0), 707.07);
     TINYTEST_EQUAL_EPSILON(decon.convert(0.2), 0.182);
     TINYTEST_EQUAL_EPSILON(decon.convert(261.551), 238.01141);
 
@@ -42,9 +42,9 @@ int testDollarToEuro03()
 int testEuroToDollar01()
 {
     EuroToDollarConverter eucon{};
-    TINYTEST_EQUAL_EPSILON(eucon.convert(10), 10.9);
-    TINYTEST_EQUAL_EPSILON(eucon.convert(55), 59.95);
-    TINYTEST_EQUAL_EPSILON(eucon.convert(284), 309.56);
+    TINYTEST_EQUAL_EPSILON(eucon.convert(10.0), 10.9);
+    TINYTEST_EQUAL_EPSILON(eucon.convert(55.0), 59.95);
+    TINYTEST_EQUAL_EPSILON(eucon.convert(284.0), 309.56);
 
     return 1;
 }
@@ -69,65 +69,65 @@ int testEuroToDollar03()
     return 1;
 }
 
-int milesToMeters01() 
+int testMilesToMeters01()
 {
   //conversion rate: 1:1609.34
   MilesToMetersConverter micon01;
   TINYTEST_EQUAL_EPSILON(micon01.convert(1.0), 1609.34);
-  TINYTEST_EQUAL_EPSILON(micon01.convert(6475), 1.0421*10000000);
-  TINYTEST_EQUAL_EPSILON(micon01.convert(22), 35405.6);
+  TINYTEST_EQUAL_EPSILON(micon01.convert(6475.0), 1.0421*10000000);
+  TINYTEST_EQUAL_EPSILON(micon01.convert(22.0), 35405.6);
 
   return 1;
 }
 
-int milesToMeters02()
+int testMilesToMeters02()
 {
   MilesToMetersConverter micon02;
   TINYTEST_EQUAL_EPSILON(micon02.convert(-1.0), -1609.34);
   TINYTEST_EQUAL_EPSILON(micon02.convert(-0.0), 0.0);
-  TINYTEST_EQUAL_EPSILON(micon02.convert(-6475), -1.0421*10000000);
+  TINYTEST_EQUAL_EPSILON(micon02.convert(-6475.0), -1.0421*10000000);
 
   return 1;
 }
 
-int milesToMeters03()
+int testMilesToMeters03()
 {
   MilesToMetersConverter micon03;
-  TINYTEST_EQUAL_EPSILON(micon03.convert(2), 3218.69);
-  TINYTEST_EQUAL_EPSILON(micon03.convert(31), 49889.7);
-  TINYTEST_EQUAL_EPSILON(micon03.convert(0), 0.0);
+  TINYTEST_EQUAL_EPSILON(micon03.convert(2.0), 3218.69);
+  TINYTEST_EQUAL_EPSILON(micon03.convert(31.0), 49889.7);
+  TINYTEST_EQUAL_EPSILON(micon03.convert(0.0), 0.0);
 
 
   return 1;
 }
 
-int metersToMiles01() 
+int testMetersToMiles01()
 {
-  //covnersion rate: 1:0.000621371
+  //conversion rate: 1:0.000621371
   MetersToMilesConverter mecon01;
-  TINYTEST_EQUAL_EPSILON(mecon01.convert(1), 0.000621371);
-  TINYTEST_EQUAL_EPSILON(mecon01.convert(10000000), 6213.711922);
+  TINYTEST_EQUAL_EPSILON(mecon01.convert(1.0), 0.000621371);
+  TINYTEST_EQUAL_EPSILON(mecon01.convert(10000000.0), 6213.711922);
   TINYTEST_EQUAL_EPSILON(mecon01.convert(0.0), 0.0);
 
   return 1;
 }
 
-int metersToMiles02() 
+int testMetersToMiles02()
 {
   MetersToMilesConverter mecon02;
   TINYTEST_EQUAL_EPSILON(mecon02.convert(-1.0), -0.000621371);
-  TINYTEST_EQUAL_EPSILON(mecon02.convert(-10000000), -6213.711922);
+  TINYTEST_EQUAL_EPSILON(mecon02.convert(-10000000.0), -6213.711922);
   TINYTEST_EQUAL_EPSILON(mecon02.convert(-0.0), 0.0);
 
   return 1;
 }
 
-int metersToMiles03() 
+int testMetersToMiles03()
 {
   MetersToMilesConverter mecon03;
-  TINYTEST_EQUAL_EPSILON(mecon03.convert(22), 0.0136702);
+  TINYTEST_EQUAL_EPSILON(mecon03.convert(22.0), 0.0136702);
   TINYTEST_EQUAL_EPSILON(mecon03.convert(1609.34), 1.0);
-  TINYTEST_EQUAL_EPSILON(mecon03.convert(-1), -0.000621371);
+  TINYTEST_EQUAL_EPSILON(mecon03.convert(-1.0), -0.000621371);
 
   return 1;
 }
@@ -135,9 +135,9 @@ int metersToMiles03()
 int testFahrenheitToCelsius01()
 {
     FahrenheitToCelsiusConverter fahcon01;
-    TINYTEST_EQUAL_EPSILON(fahcon01.convert(32), 0.0);
-    TINYTEST_EQUAL_EPSILON(fahcon01.convert(50), 10.0);
-    TINYTEST_EQUAL_EPSILON(fahcon01.convert(25), -3.88889);
+    TINYTEST_EQUAL_EPSILON(fahcon01.convert(32.0), 0.0);
+    TINYTEST_EQUAL_EPSILON(fahcon01.convert(50.0), 10.0);
+    TINYTEST_EQUAL_EPSILON(fahcon01.convert(25.0), -3.88889);
 
     return 1;
 }
@@ -176,7 +176,7 @@ int testCelsiusToFahrenheit02()
 {
     CelsiusToFahrenheitConverter celcon{};
     TINYTEST_EQUAL_EPSILON(celcon.convert(-2.2), 28.04);
-    TINYTEST_EQUAL_EPSILON(celcon.convert(66), 150.8);
+    TINYTEST_EQUAL_EPSILON(celcon.convert(66.0), 150.8);
     TINYTEST_EQUAL_EPSILON(celcon.convert(-273.15), -459.67);
 
     return 1;
@@ -202,13 +202,13 @@ TINYTEST_ADD_TEST(testEuroToDollar01);
 TINYTEST_ADD_TEST(testEuroToDollar02);
 TINYTEST_ADD_TEST(testEuroToDollar03);
 
-TINYTEST_ADD_TEST(milesToMeters01);
-TINYTEST_ADD_TEST(milesToMeters02);
-TINYTEST_ADD_TEST(milesToMeters03);
+TINYTEST_ADD_TEST(testMilesToMeters01);
+TINYTEST_ADD_TEST(testMilesToMeters02);
+TINYTEST_ADD_TEST(testMilesToMeters03);
 
-TINYTEST_ADD_TEST(metersToMiles01);
-TINYTEST_ADD_TEST(metersToMiles02);
-TINYTEST_ADD_TEST(metersToMiles03);
+TINYTEST_ADD_TEST(testMetersToMiles01);
+TINYTEST_ADD_TEST(testMetersToMiles02);
+TINYTEST_ADD_TEST(testMetersToMiles03);
 
 TINYTEST_ADD_TEST(testFahrenheitToCelsius01);
 TINYTEST_ADD_TEST(testFahrenheitToCelsius02);
