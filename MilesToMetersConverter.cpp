@@ -2,12 +2,12 @@
 
 #include <string>
 
-double MilesToMetersonverter::convert(double inputMiles){
+double MilesToMetersConverter::convert(double inputMiles){
   return inputMiles*1609.344;
 }
 
 std::string MilesToMetersConverter::toString() const{
-  return "Miles to Meters Converter";
+  return "Miles to Meters UnitConverter";
 }
 
 void MilesToMetersConverter::print() const{
