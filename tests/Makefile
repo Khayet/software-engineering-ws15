@@ -1,8 +1,8 @@
 # minimal makefile for SE class
-all: main test
+all: test convert
 
 # main depends on all cpp files
-main: $(patsubst %.cpp,%.o,$(wildcard *.cpp))
+test: $(patsubst %.cpp,%.o,$(filter-out ../main.cpp, $(wildcard ../*.cpp)) test.cpp)
 	g++ --std=c++11 -Wall -o $@ $^
 
 # a slightly ugly hack to make .o depend on .hpp if it exists
@@ -10,8 +10,8 @@ main: $(patsubst %.cpp,%.o,$(wildcard *.cpp))
 %.o: %.cpp $$(wildcard $$*.hpp)
 	g++ --std=c++11 -Wall -c -o $@ $<
 
-test:
-	./main DollarToEuro 10000
+convert:
+	./test
 
 clean:
 	rm main *.o

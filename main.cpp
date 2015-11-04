@@ -1,5 +1,10 @@
 #include <memory>
 #include "DollarToEuroConverter.hpp"
+#include "EuroToDollarConverter.hpp"
+#include "MetersToMilesConverter.hpp"
+#include "MilesToMetersConverter.hpp"
+#include "FahrenheitToCelsiusConverter.hpp"
+#include "CelsiusToFahrenheitConverter.hpp"
 
 int main(int argc, char* argv[])
 {
