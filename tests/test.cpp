@@ -126,7 +126,7 @@ int metersToMiles03()
 {
   MetersToMilesConverter mecon03;
   TINYTEST_EQUAL_EPSILON(mecon03.convert(22), 0.0136702);
-  TINYTEST_EQUAL_EPSILON(mecon03.convert(1609.34), 1);
+  TINYTEST_EQUAL_EPSILON(mecon03.convert(1609.34), 1.0);
   TINYTEST_EQUAL_EPSILON(mecon03.convert(-1), -0.000621371);
 
   return 1;
@@ -134,30 +134,30 @@ int metersToMiles03()
 
 int testFahrenheitToCelsius01()
 {
-    FahrenheitToCelsiusConverter fahcon{};
-    TINYTEST_EQUAL_EPSILON(fahcon.convert(32), 0.0);
-    TINYTEST_EQUAL_EPSILON(fahcon.convert(50), 10.0);
-    TINYTEST_EQUAL_EPSILON(fahcon.convert(25), -3.88889);
+    FahrenheitToCelsiusConverter fahcon01;
+    TINYTEST_EQUAL_EPSILON(fahcon01.convert(32), 0.0);
+    TINYTEST_EQUAL_EPSILON(fahcon01.convert(50), 10.0);
+    TINYTEST_EQUAL_EPSILON(fahcon01.convert(25), -3.88889);
 
     return 1;
 }
 
 int testFahrenheitToCelsius02()
 {
-    FahrenheitToCelsiusConverter fahcon{};
-    TINYTEST_EQUAL_EPSILON(fahcon.convert(21.2), -6);
-    TINYTEST_EQUAL_EPSILON(fahcon.convert(-4.0), -20);
-    TINYTEST_EQUAL_EPSILON(fahcon.convert(-8.45), -22.47222);
+    FahrenheitToCelsiusConverter fahcon02;
+    TINYTEST_EQUAL_EPSILON(fahcon02.convert(21.2), -6);
+    TINYTEST_EQUAL_EPSILON(fahcon02.convert(-4.0), -20);
+    TINYTEST_EQUAL_EPSILON(fahcon02.convert(-8.45), -22.47222);
 
     return 1;
 }
 
 int testFahrenheitToCelsius03()
 {
-    FahrenheitToCelsiusConverter fahcon{};
-    TINYTEST_EQUAL_EPSILON(fahcon.convert(0.0), -17.7778);
-    TINYTEST_EQUAL_EPSILON(fahcon.convert(1.0), -17.2222);
-    TINYTEST_EQUAL_EPSILON(fahcon.convert(-1.0), -18.3333);
+    FahrenheitToCelsiusConverter fahcon03;
+    TINYTEST_EQUAL_EPSILON(fahcon03.convert(0.0), -17.7778);
+    TINYTEST_EQUAL_EPSILON(fahcon03.convert(1.0), -17.2222);
+    TINYTEST_EQUAL_EPSILON(fahcon03.convert(-1.0), -18.3333);
 
     return 1;
 }
@@ -197,6 +197,10 @@ TINYTEST_START_SUITE(Convert);
 TINYTEST_ADD_TEST(testDollarToEuro01);
 TINYTEST_ADD_TEST(testDollarToEuro02);
 TINYTEST_ADD_TEST(testDollarToEuro03);
+
+TINYTEST_ADD_TEST(testEuroToDollar01);
+TINYTEST_ADD_TEST(testEuroToDollar02);
+TINYTEST_ADD_TEST(testEuroToDollar03);
 
 TINYTEST_ADD_TEST(milesToMeters01);
 TINYTEST_ADD_TEST(milesToMeters02);

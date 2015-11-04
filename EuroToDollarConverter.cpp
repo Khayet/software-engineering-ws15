@@ -3,7 +3,7 @@
 #include <string>
 
 double EuroToDollarConverter::convert(double inputEuro){
-  return inputEuro*1.10;
+  return inputEuro*1.09;
 }
 
 std::string EuroToDollarConverter::toString() const{
