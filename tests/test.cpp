@@ -65,6 +65,66 @@ int testEuroToDollar03()
     return 1;
 }
 
+int testFahrenheitToCelsius01()
+{
+    FahrenheitToCelsiusConverter fahcon{};
+    TINYTEST_EQUAL_EPSILON(fahcon.convert(32), 0.0);
+    TINYTEST_EQUAL_EPSILON(fahcon.convert(50), 10.0);
+    TINYTEST_EQUAL_EPSILON(fahcon.convert(25), -3.88889);
+
+    return 1;
+}
+
+int testFahrenheitToCelsius02()
+{
+    FahrenheitToCelsiusConverter fahcon{};
+    TINYTEST_EQUAL_EPSILON(fahcon.convert(21.2), -6);
+    TINYTEST_EQUAL_EPSILON(fahcon.convert(-4.0), -20);
+    TINYTEST_EQUAL_EPSILON(fahcon.convert(-8.45), -22.47222);
+
+    return 1;
+}
+
+int testFahrenheitToCelsius03()
+{
+    FahrenheitToCelsiusConverter fahcon{};
+    TINYTEST_EQUAL_EPSILON(fahcon.convert(0.0), -17.7778);
+    TINYTEST_EQUAL_EPSILON(fahcon.convert(1.0), -17.2222);
+    TINYTEST_EQUAL_EPSILON(fahcon.convert(-1.0), -18.3333);
+
+    return 1;
+}
+
+int testCelsiusToFahrenheit01()
+{
+    CelsiusToFahrenheitConverter celcon{};
+    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
+    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
+    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
+
+    return 1;
+}
+
+int testCelsiusToFahrenheit02()
+{
+    CelsiusToFahrenheitConverter celcon{};
+    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
+    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
+    TINYTEST_EQUAL_EPSILON(celcon.convert( ), );
+
+    return 1;
+}
+
+int testCelsiusToFahrenheit03()
+{
+    CelsiusToFahrenheitConverter celcon{};
+    TINYTEST_EQUAL_EPSILON(celcon.convert(0.0), 32.0);
+    TINYTEST_EQUAL_EPSILON(celcon.convert(1.0), 33.8);
+    TINYTEST_EQUAL_EPSILON(celcon.convert(-1.0), 30.2);
+
+    return 1;
+}
+
 TINYTEST_START_SUITE(Convert);
 
 TINYTEST_ADD_TEST(testDollarToEuro01);
