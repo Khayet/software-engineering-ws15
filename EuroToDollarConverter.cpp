@@ -7,7 +7,7 @@ double EuroToDollarConverter::convert(double inputEuro){
 }
 
 std::string EuroToDollarConverter::toString() const{
-  return "Euro to Dollar UnitConverter";
+  return "Euro to Dollar Converter";
 }
 
 void EuroToDollarConverter::print() const{
