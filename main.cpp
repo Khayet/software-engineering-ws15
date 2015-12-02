@@ -1,4 +1,5 @@
 #include <memory>
+#include <string>
 #include "DollarToEuroConverter.hpp"
 #include "EuroToDollarConverter.hpp"
 #include "MetersToMilesConverter.hpp"
@@ -8,20 +9,20 @@
 
 int main(int argc, char* argv[])
 {
-  std::string conversion = argv[0];
-  std::string value = argv[1];
+  std::string conversion = argv[1];
+  double value = std::stod(argv[2]);
+  std::shared_ptr<UnitConverter> myConverter;
 
-  /*
-   * TODO
-   *
-   * use desired conversion here
-   *
-  */
+  if (conversion == "DollarToEuro") myConverter = std::make_shared<DollarToEuroConverter>();
+  else if (conversion == "EuroToDollar") myConverter = std::make_shared<EuroToDollarConverter>();
+  else if (conversion == "MetersToMiles")  myConverter = std::make_shared<MetersToMilesConverter>();
+  else if (conversion == "MilesToMeters")  myConverter = std::make_shared<MilesToMetersConverter>();
+  else if (conversion == "FahrenheitToCelsius")  myConverter = std::make_shared<FahrenheitToCelsiusConverter>();
+  else if (conversion == "CelsiusToFahrenheit")  myConverter = std::make_shared<CelsiusToFahrenheitConverter>();
 
-  auto myConverter = std::make_shared<DollarToEuroConverter>();
-  double aLotOfDollars = 10000;
-  double aLotOfEuros = myConverter->convert(aLotOfDollars);
-  std::cout << myConverter->toString() << " has converted "<< aLotOfDollars << " Dollar to " << aLotOfEuros <<" Euros!"<<std::endl;
+  double v = myConverter->convert(value);
+  std::cout << myConverter->toString() << " has converted " << value << " to " << v << std::endl;
+
   return 0;
 }
 
