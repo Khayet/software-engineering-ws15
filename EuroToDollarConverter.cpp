@@ -2,7 +2,7 @@
 
 #include <string>
 
-double EuroToDollarConverter::convert(double inputEuro){
+double EuroToDollarConverter::convert(const double inputEuro) const{
   return inputEuro*1.09;
 }
 

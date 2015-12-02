@@ -2,7 +2,7 @@
 
 #include <string>
 
-double MetersToMilesConverter::convert(double inputMeters){
+double MetersToMilesConverter::convert(const double inputMeters) const{
   return inputMeters*0.000621371;
 }
 

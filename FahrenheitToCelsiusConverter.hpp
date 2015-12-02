@@ -6,7 +6,7 @@
 class FahrenheitToCelsiusConverter : public TemperatureConverter
 {
   public:
-    double convert(double inFahrenheit);
+    double convert(const double inFahrenheit) const;
     std::string toString() const;
     void print() const;
 };

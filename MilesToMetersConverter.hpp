@@ -6,7 +6,7 @@
 class MilesToMetersConverter : public LengthConverter
 {
   public:
-    double convert(double inMiles);
+    double convert(const double inMiles) const;
     std::string toString() const;
     void print() const;
 };
