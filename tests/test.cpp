@@ -5,7 +5,10 @@
 #include "../MetersToMilesConverter.hpp"
 #include "../FahrenheitToCelsiusConverter.hpp"
 #include "../CelsiusToFahrenheitConverter.hpp"
+//#include "../ConverterFactory.hpp"
 #include <iostream>
+#include <string>
+#include <memory>
 
 //Kurs 0.91
 int testDollarToEuro01()
@@ -73,7 +76,7 @@ int testMilesToMeters01()
 {
   //conversion rate: 1:1609.34
   MilesToMetersConverter micon01;
-  TINYTEST_EQUAL_EPSILON(micon01.convert(1.0), 1609.34);
+  TINYTEST_EQUAL_EPSILON(micon01.convert(1.0), 1609.344);
   TINYTEST_EQUAL_EPSILON(micon01.convert(6475.0), 1.0421*10000000);
   TINYTEST_EQUAL_EPSILON(micon01.convert(22.0), 35405.6);
 
@@ -83,7 +86,7 @@ int testMilesToMeters01()
 int testMilesToMeters02()
 {
   MilesToMetersConverter micon02;
-  TINYTEST_EQUAL_EPSILON(micon02.convert(-1.0), -1609.34);
+  TINYTEST_EQUAL_EPSILON(micon02.convert(-1.0), -1609.344);
   TINYTEST_EQUAL_EPSILON(micon02.convert(-0.0), 0.0);
   TINYTEST_EQUAL_EPSILON(micon02.convert(-6475.0), -1.0421*10000000);
 
@@ -137,7 +140,7 @@ int testFahrenheitToCelsius01()
     FahrenheitToCelsiusConverter fahcon01;
     TINYTEST_EQUAL_EPSILON(fahcon01.convert(32.0), 0.0);
     TINYTEST_EQUAL_EPSILON(fahcon01.convert(50.0), 10.0);
-    TINYTEST_EQUAL_EPSILON(fahcon01.convert(25.0), -3.88889);
+    TINYTEST_EQUAL_EPSILON(fahcon01.convert(25.0), -3.888889);
 
     return 1;
 }
@@ -147,7 +150,7 @@ int testFahrenheitToCelsius02()
     FahrenheitToCelsiusConverter fahcon02;
     TINYTEST_EQUAL_EPSILON(fahcon02.convert(21.2), -6);
     TINYTEST_EQUAL_EPSILON(fahcon02.convert(-4.0), -20);
-    TINYTEST_EQUAL_EPSILON(fahcon02.convert(-8.45), -22.47222);
+    TINYTEST_EQUAL_EPSILON(fahcon02.convert(-8.45), -22.472222);
 
     return 1;
 }
@@ -155,7 +158,7 @@ int testFahrenheitToCelsius02()
 int testFahrenheitToCelsius03()
 {
     FahrenheitToCelsiusConverter fahcon03;
-    TINYTEST_EQUAL_EPSILON(fahcon03.convert(0.0), -17.7778);
+    TINYTEST_EQUAL_EPSILON(fahcon03.convert(0.0), -17.777778);
     TINYTEST_EQUAL_EPSILON(fahcon03.convert(1.0), -17.2222);
     TINYTEST_EQUAL_EPSILON(fahcon03.convert(-1.0), -18.3333);
 
@@ -192,6 +195,16 @@ int testCelsiusToFahrenheit03()
     return 1;
 }
 
+/*int testFactoryDollarToEuro()
+{
+    auto factory = ConverterFactory.instance();
+    auto conv = factory->create_converter("DollarToEuro");
+    TINYTEST_ASSERT(conv);
+
+    return 1;
+}*/
+
+
 TINYTEST_START_SUITE(Convert);
 
 TINYTEST_ADD_TEST(testDollarToEuro01);
@@ -218,8 +231,13 @@ TINYTEST_ADD_TEST(testCelsiusToFahrenheit01);
 TINYTEST_ADD_TEST(testCelsiusToFahrenheit02);
 TINYTEST_ADD_TEST(testCelsiusToFahrenheit03);
 
-
-
+//TINYTEST_ADD_TEST(testFactoryDollarToEuro);
+/*TINYTEST_ADD_TEST(testFactoryEuroToDollar);
+TINYTEST_ADD_TEST(testFactoryMilesToMeters);
+TINYTEST_ADD_TEST(testFactoryMetersToMiles);
+TINYTEST_ADD_TEST(testFactoryFahrenheitToCelsius);
+TINYTEST_ADD_TEST(testFactoryCelsiusToFahrenheit);
+*/
 TINYTEST_END_SUITE();
 
 TINYTEST_MAIN_SINGLE_SUITE(Convert);

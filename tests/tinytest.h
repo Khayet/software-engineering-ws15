@@ -1,4 +1,4 @@
-/*! 
+/*!
     Simple unit testing for c/c++
     Copyright Cosmin Cremarenco.
     Licence: Apache 2.0
@@ -14,7 +14,7 @@
     Otherwise, if you wish to gather test suites across translation units
     you need to declare your test suites using TINYTEST_DECLARE_SUITE
     and include the .h with the declarations inside a .c/.cpp file
-    which will call TINYTEST_START_MAIN/TINYTEST_END_MAIN in which 
+    which will call TINYTEST_START_MAIN/TINYTEST_END_MAIN in which
     you will put all test suites.
 
     Please see examples for more details.
@@ -115,13 +115,13 @@ void Suite##suiteName(TinyTestRegistry* registry)                       \
   suite->m_name = #suiteName;                                           \
   suite->m_headTest = NULL;                                             \
   suite->m_next = NULL
-  
+
 #define TINYTEST_ADD_TEST(test)                                         \
   TinyTest* test##decl = (TinyTest*)malloc(sizeof(TinyTest));           \
   test##decl->m_func = test;                                            \
   test##decl->m_name = #test;                                           \
   test##decl->m_next = suite->m_headTest;                               \
-  suite->m_headTest = test##decl         
+  suite->m_headTest = test##decl
 
 #define TINYTEST_END_SUITE()                                            \
   suite->m_next = registry->m_headSuite;                                \
@@ -135,7 +135,7 @@ void Suite##suiteName(TinyTestRegistry* registry)                       \
     registry.m_headSuite = NULL
 
 #define TINYTEST_RUN_SUITE(suiteName)                                   \
-  Suite##suiteName(&registry) 
+  Suite##suiteName(&registry)
 
 #define TINYTEST_INTERNAL_FREE_TESTS()                                  \
   {                                                                     \
@@ -197,8 +197,8 @@ void Suite##suiteName(TinyTestRegistry* registry)                       \
   TINYTEST_END_MAIN();
 
 #else // TINYTEST_NOTESTING
-#define TINYTEST_EQUAL_MSG(expected, actual, msg) (void)0 
-#define TINYTEST_EQUAL(expected, actual) (void)0 
+#define TINYTEST_EQUAL_MSG(expected, actual, msg) (void)0
+#define TINYTEST_EQUAL(expected, actual) (void)0
 #define TINYTEST_STR_EQUAL_MSG(expected, actual, msg) (void)0
 #define TINYTEST_STR_EQUAL(expected, actual) (void)0
 #define TINYTEST_ASSERT_MSG(assertion, msg) (void)0
