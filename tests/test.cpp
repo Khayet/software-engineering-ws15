@@ -204,6 +204,8 @@ int testFactoryDollarToEuro()
     return 1;
 }
 
+
+//for exercise 4: test factory
 int testFactoryEuroToDollar()
 {
     auto factory = ConverterFactory::instance();
