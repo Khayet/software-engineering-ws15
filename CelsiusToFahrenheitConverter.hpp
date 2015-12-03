@@ -6,6 +6,7 @@
 class CelsiusToFahrenheitConverter : public TemperatureConverter
 {
   public:
+    std::shared_ptr<UnitConverter> clone() const { return std::make_shared<CelsiusToFahrenheitConverter>(); }
     double convert(const double inCelsius) const;
     std::string toString() const;
     void print() const;

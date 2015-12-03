@@ -12,7 +12,7 @@
 
 class ConverterFactory {
 private:
-    ConverterFactory() {};
+    ConverterFactory() {}; //singleton-pattern -> constructor is private
     static ConverterFactory* c_instance;
 
 public:
@@ -27,8 +27,12 @@ public:
             return std::make_shared<MilesToMetersConverter>();
         else if (choice == "FahrenheitToCelsius")
             return std::make_shared<FahrenheitToCelsiusConverter>();
-        else
+        else if (choice == "CelsiusToFahrenheit")
             return std::make_shared<CelsiusToFahrenheitConverter>();
+        else {
+            std::cerr << "Error: No Converter found. Using DollarToEuroConverter instead.\n";
+            return std::make_shared<DollarToEuroConverter>();
+        }
     }
 
     static ConverterFactory* instance() {
