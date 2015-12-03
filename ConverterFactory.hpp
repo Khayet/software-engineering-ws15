@@ -2,6 +2,7 @@
 #define CONVERTERFACTORY_HPP
 
 #include <string>
+#include <memory>
 #include "DollarToEuroConverter.hpp"
 #include "EuroToDollarConverter.hpp"
 #include "MetersToMilesConverter.hpp"
@@ -26,7 +27,7 @@ public:
             return std::make_shared<MilesToMetersConverter>();
         else if (choice == "FahrenheitToCelsius")
             return std::make_shared<FahrenheitToCelsiusConverter>();
-        else if (choice == "CelsiusToFahrenheit")
+        else
             return std::make_shared<CelsiusToFahrenheitConverter>();
     }
 

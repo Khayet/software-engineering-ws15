@@ -5,7 +5,7 @@
 #include "../MetersToMilesConverter.hpp"
 #include "../FahrenheitToCelsiusConverter.hpp"
 #include "../CelsiusToFahrenheitConverter.hpp"
-//#include "../ConverterFactory.hpp"
+#include "../ConverterFactory.hpp"
 #include <iostream>
 #include <string>
 #include <memory>
@@ -148,8 +148,8 @@ int testFahrenheitToCelsius01()
 int testFahrenheitToCelsius02()
 {
     FahrenheitToCelsiusConverter fahcon02;
-    TINYTEST_EQUAL_EPSILON(fahcon02.convert(21.2), -6);
-    TINYTEST_EQUAL_EPSILON(fahcon02.convert(-4.0), -20);
+    TINYTEST_EQUAL_EPSILON(fahcon02.convert(21.2), -6.0);
+    TINYTEST_EQUAL_EPSILON(fahcon02.convert(-4.0), -20.0);
     TINYTEST_EQUAL_EPSILON(fahcon02.convert(-8.45), -22.472222);
 
     return 1;
@@ -168,9 +168,9 @@ int testFahrenheitToCelsius03()
 int testCelsiusToFahrenheit01()
 {
     CelsiusToFahrenheitConverter celcon{};
-    TINYTEST_EQUAL_EPSILON(celcon.convert(0), 32);
-    TINYTEST_EQUAL_EPSILON(celcon.convert(-100), -148);
-    TINYTEST_EQUAL_EPSILON(celcon.convert(100), 212);
+    TINYTEST_EQUAL_EPSILON(celcon.convert(0), 32.0);
+    TINYTEST_EQUAL_EPSILON(celcon.convert(-100), -148.0);
+    TINYTEST_EQUAL_EPSILON(celcon.convert(100), 212.0);
 
     return 1;
 }
@@ -195,14 +195,59 @@ int testCelsiusToFahrenheit03()
     return 1;
 }
 
-/*int testFactoryDollarToEuro()
+int testFactoryDollarToEuro()
 {
-    auto factory = ConverterFactory.instance();
+    auto factory = ConverterFactory::instance();
     auto conv = factory->create_converter("DollarToEuro");
     TINYTEST_ASSERT(conv);
 
     return 1;
-}*/
+}
+
+int testFactoryEuroToDollar()
+{
+    auto factory = ConverterFactory::instance();
+    auto conv = factory->create_converter("EuroToDollar");
+    TINYTEST_ASSERT(conv);
+
+    return 1;
+}
+
+int testFactoryMilesToMeters()
+{
+    auto factory = ConverterFactory::instance();
+    auto conv = factory->create_converter("MilesToMeters");
+    TINYTEST_ASSERT(conv);
+
+    return 1;
+}
+
+int testFactoryMetersToMiles()
+{
+    auto factory = ConverterFactory::instance();
+    auto conv = factory->create_converter("MetersToMiles");
+    TINYTEST_ASSERT(conv);
+
+    return 1;
+}
+
+int testFactoryFahrenheitToCelsius()
+{
+    auto factory = ConverterFactory::instance();
+    auto conv = factory->create_converter("FahrenheitToCelsius");
+    TINYTEST_ASSERT(conv);
+
+    return 1;
+}
+
+int testFactoryCelsiusToFahrenheit()
+{
+    auto factory = ConverterFactory::instance();
+    auto conv = factory->create_converter("CelsiusToFahrenheit");
+    TINYTEST_ASSERT(conv);
+
+    return 1;
+}
 
 
 TINYTEST_START_SUITE(Convert);
@@ -231,13 +276,13 @@ TINYTEST_ADD_TEST(testCelsiusToFahrenheit01);
 TINYTEST_ADD_TEST(testCelsiusToFahrenheit02);
 TINYTEST_ADD_TEST(testCelsiusToFahrenheit03);
 
-//TINYTEST_ADD_TEST(testFactoryDollarToEuro);
-/*TINYTEST_ADD_TEST(testFactoryEuroToDollar);
+TINYTEST_ADD_TEST(testFactoryDollarToEuro);
+TINYTEST_ADD_TEST(testFactoryEuroToDollar);
 TINYTEST_ADD_TEST(testFactoryMilesToMeters);
 TINYTEST_ADD_TEST(testFactoryMetersToMiles);
 TINYTEST_ADD_TEST(testFactoryFahrenheitToCelsius);
 TINYTEST_ADD_TEST(testFactoryCelsiusToFahrenheit);
-*/
+
 TINYTEST_END_SUITE();
 
 TINYTEST_MAIN_SINGLE_SUITE(Convert);
