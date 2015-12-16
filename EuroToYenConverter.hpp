@@ -6,7 +6,7 @@
 class EuroToYenConverter : public CurrencyConverter
 {
   public:
-    std::shared_ptr<UnitConverter> clone() const { return std::make_shared<EuroToYenConverter>(); }
+    UnitConverter* clone() const { return new EuroToYenConverter(); }
     double convert(const double inputEuro) const;
     std::string toString() const;
     void print() const;

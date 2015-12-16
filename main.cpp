@@ -9,18 +9,15 @@ int main(int argc, char* argv[])
     double value = std::stod(argv[2]);
 
     auto factory = ConverterFactory::instance();
-    std::shared_ptr<UnitConverter> myConverter = factory->create_converter(conversion);
+    UnitConverter* myConverter = factory->create_converter(conversion);
 
     double v = myConverter->convert(value);
     std::cout << myConverter->toString() << " has converted " << value << " to " << v << std::endl;
 
-    std::cout << "17: still working\n";
-    std::shared_ptr<Inversion> myConverter_inv = std::make_shared<Inversion>( factory->create_converter(conversion) );
-    std::cout << "19: still working\n";
+    Inversion* myConverter_inv = new Inversion( factory->create_converter(conversion) );
 
     double v_inv = myConverter_inv->convert(value);
-    std::cout << "22: still working\n";
 
-    std::cout << myConverter_inv->toString() << " has inverted conversion from " << value << " to " << v_inv << std::endl;
+    std::cout << myConverter_inv->toString() << " has inversely converted from " << value << " to " << v_inv << std::endl;
     return 0;
 }

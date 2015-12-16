@@ -6,7 +6,7 @@
 class MetersToMilesConverter : public LengthConverter
 {
   public:
-    std::shared_ptr<UnitConverter> clone() const { return std::make_shared<MetersToMilesConverter>(); }
+    UnitConverter* clone() const { return new MetersToMilesConverter(); }
     double convert(const double inMeters) const;
     std::string toString() const;
     void print() const;

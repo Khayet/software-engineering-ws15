@@ -6,7 +6,7 @@
 class CelsiusToKelvinConverter : public TemperatureConverter
 {
   public:
-    std::shared_ptr<UnitConverter> clone() const { return std::make_shared<CelsiusToKelvinConverter>(); }
+    UnitConverter* clone() const { return new CelsiusToKelvinConverter(); }
     double convert(const double inCelsius) const;
     std::string toString() const;
     void print() const;

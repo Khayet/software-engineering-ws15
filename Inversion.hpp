@@ -6,25 +6,23 @@
 class Inversion : public Condecorator
 {
 public:
-    Inversion(std::shared_ptr<UnitConverter> condec) : Condecorator{condec} {}
+    Inversion(UnitConverter* unicon) : Condecorator{unicon} {}
 
     double convert(const double inValue) const {
-        return 1.0 / (condec_->convert(inValue));
+        return inValue / (unit_ptr->convert(1.0));
     }
 
     virtual std::string toString() const {
-        if (condec_ == nullptr) {
-            return "ERROR Inversion::toString(): Missing condec_.";
+        if (unit_ptr == nullptr) {
+            return "ERROR Inversion::toString(): Missing unit_ptr.";
         }
-        return condec_->toString();
+        return unit_ptr->toString();
     }
 
     virtual void print() const {
         std::cout << toString();
     }
-
-private:
-    std::shared_ptr<Condecorator> condec_;
 };
 
 #endif
+

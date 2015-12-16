@@ -18,10 +18,10 @@ class ConverterFactory {
 private:
     ConverterFactory() {}; //singleton-pattern -> constructor is private
     static ConverterFactory* c_instance;
-    static std::map<std::string, std::shared_ptr<UnitConverter>> c_prototypes; //prototype-pattern
+    static std::map<std::string, UnitConverter*> c_prototypes; //prototype-pattern
 
 public:
-    std::shared_ptr<UnitConverter> create_converter(std::string choice) const {
+    UnitConverter* create_converter(std::string choice) const {
         return c_prototypes.find(choice)->second;
     }
 
@@ -33,17 +33,17 @@ public:
 };
 
 //initialize 10 converter prototypes and store them in a map
-std::map<std::string, std::shared_ptr<UnitConverter>> ConverterFactory::c_prototypes {
+std::map<std::string, UnitConverter*> ConverterFactory::c_prototypes {
     {"ERROR", nullptr},
-    {"DollarToEuro", std::make_shared<DollarToEuroConverter>()},
-    {"EuroToDollar", std::make_shared<EuroToDollarConverter>()},
-    {"EuroToYen", std::make_shared<EuroToYenConverter>()},
-    {"MetersToMiles", std::make_shared<MetersToMilesConverter>()},
-    {"MilesToMeters", std::make_shared<MilesToMetersConverter>()},
-    {"MetersToFeet", std::make_shared<MetersToFeetConverter>()},
-    {"FahrenheitToCelsius", std::make_shared<FahrenheitToCelsiusConverter>()},
-    {"CelsiusToFahrenheit", std::make_shared<CelsiusToFahrenheitConverter>()},
-    {"CelsiusToKelvin", std::make_shared<CelsiusToKelvinConverter>()}
+    {"DollarToEuro", new DollarToEuroConverter()},
+    {"EuroToDollar", new EuroToDollarConverter()},
+    {"EuroToYen", new EuroToYenConverter()},
+    {"MetersToMiles", new MetersToMilesConverter()},
+    {"MilesToMeters", new MilesToMetersConverter()},
+    {"MetersToFeet", new MetersToFeetConverter()},
+    {"FahrenheitToCelsius", new FahrenheitToCelsiusConverter()},
+    {"CelsiusToFahrenheit", new CelsiusToFahrenheitConverter()},
+    {"CelsiusToKelvin", new CelsiusToKelvinConverter()}
 };
 
 ConverterFactory* ConverterFactory::c_instance = NULL;

@@ -6,36 +6,33 @@
 class Condecorator : public UnitConverter
 {
 public:
-    Condecorator(std::shared_ptr<UnitConverter> conpointer) :
-    condec_ptr{conpointer} {}
+    Condecorator(UnitConverter* uni_ptr) :
+    unit_ptr{uni_ptr} {}
 
     virtual double convert(const double inValue) const {
-        std::cout << "Condecorator::convert 13 still working" << std::endl;
-        if (condec_ptr == nullptr) {
+        if (unit_ptr == nullptr) {
             return inValue;
         }
-        std::cout << "Condecorator::convert 17 still working" << std::endl;
-        return condec_ptr->convert(inValue);
-        std::cout << "Condecorator::convert 19 still working" << std::endl;
+        return unit_ptr->convert(inValue);
     }
 
-    virtual std::shared_ptr<UnitConverter> clone() const {
-        return condec_ptr;
+    virtual UnitConverter* clone() const {
+        return unit_ptr->clone();
     };
 
     virtual std::string toString() const {
-        if (condec_ptr == nullptr) {
-            return "ERROR Condecorator::toString(): Missing condec_ptr.";
+        if (unit_ptr == nullptr) {
+            return "ERROR Condecorator::toString(): Missing unit_ptr.";
         }
-        return condec_ptr->toString();
+        return unit_ptr->toString();
     }
 
     virtual void print() const {
         std::cout << toString();
     }
 
-private:
-    std::shared_ptr<UnitConverter> condec_ptr;
+protected:
+    UnitConverter* unit_ptr;
 };
 
 #endif
