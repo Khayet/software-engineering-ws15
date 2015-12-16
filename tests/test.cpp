@@ -251,12 +251,6 @@ int testFactoryCelsiusToFahrenheit()
     return 1;
 }
 
-int testDecorator()
-{
-    auto conv = new MetersToMilesConverter(new ());
-
-    return 1;
-}
 
 
 TINYTEST_START_SUITE(Convert);
