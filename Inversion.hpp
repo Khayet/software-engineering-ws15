@@ -3,9 +3,10 @@
 
 #include "Condecorator.hpp"
 
-class Inversion : public Condecorator {
+class Inversion : public Condecorator
+{
 public:
-    Inversion(std::shared_ptr<Condecorator> condec) : Condecorator{condec} {}
+    Inversion(std::shared_ptr<UnitConverter> condec) : Condecorator{condec} {}
 
     double convert(const double inValue) const {
         return 1.0 / (condec_->convert(inValue));

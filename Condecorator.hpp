@@ -1,16 +1,22 @@
 #ifndef CONDECORATOR_HPP
 #define CONDECORATOR_HPP
 
-class Condecorator : public UnitConverter {
+#include "UnitConverter.hpp"
+
+class Condecorator : public UnitConverter
+{
 public:
     Condecorator(std::shared_ptr<UnitConverter> conpointer) :
     condec_ptr{conpointer} {}
 
     virtual double convert(const double inValue) const {
+        std::cout << "Condecorator::convert 13 still working" << std::endl;
         if (condec_ptr == nullptr) {
             return inValue;
         }
+        std::cout << "Condecorator::convert 17 still working" << std::endl;
         return condec_ptr->convert(inValue);
+        std::cout << "Condecorator::convert 19 still working" << std::endl;
     }
 
     virtual std::shared_ptr<UnitConverter> clone() const {
