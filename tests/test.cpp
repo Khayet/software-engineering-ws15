@@ -5,6 +5,7 @@
 #include "../MetersToMilesConverter.hpp"
 #include "../FahrenheitToCelsiusConverter.hpp"
 #include "../CelsiusToFahrenheitConverter.hpp"
+#include "../Inversion.hpp"
 #include "../ConverterFactory.hpp"
 #include <iostream>
 #include <string>
@@ -259,6 +260,14 @@ int testDecorator()
     return 1;
 }
 
+int testInversion()
+{
+    auto inv = new Inversion(new MilesToMetersConverter());
+    TINYTEST_EQUAL_EPSILON(inv->convert(2000.0), 1.242742);
+
+    return 1;
+}
+
 TINYTEST_START_SUITE(Convert);
 
 TINYTEST_ADD_TEST(testDollarToEuro01);
@@ -293,6 +302,7 @@ TINYTEST_ADD_TEST(testFactoryFahrenheitToCelsius);
 TINYTEST_ADD_TEST(testFactoryCelsiusToFahrenheit);
 
 TINYTEST_ADD_TEST(testDecorator);
+TINYTEST_ADD_TEST(testInversion);
 
 TINYTEST_END_SUITE();
 
