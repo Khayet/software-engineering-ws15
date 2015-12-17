@@ -1,11 +1,13 @@
 #ifndef MILESTOMETERSCONVERTER_H
 #define MILESTOMETERSCONVERTER_H
 
-#include "LengthConverter.hpp"
+#include "Condecorator.hpp"
 
-class MilesToMetersConverter : public LengthConverter
+class MilesToMetersConverter : public Condecorator
 {
   public:
+    MilesToMetersConverter() : Condecorator{ nullptr } {}
+    MilesToMetersConverter(UnitConverter* ptr) : Condecorator{ptr} {}
     UnitConverter* clone() const { return new MilesToMetersConverter(); }
     double convert(const double inMiles) const;
     std::string toString() const;

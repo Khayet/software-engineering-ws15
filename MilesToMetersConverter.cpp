@@ -3,7 +3,7 @@
 #include <string>
 
 double MilesToMetersConverter::convert(const double inputMiles) const{
-  return inputMiles*1609.344;
+  return Condecorator::convert(inputMiles*1609.344);
 }
 
 std::string MilesToMetersConverter::toString() const{

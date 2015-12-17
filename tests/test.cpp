@@ -251,7 +251,13 @@ int testFactoryCelsiusToFahrenheit()
     return 1;
 }
 
+int testDecorator()
+{
+    auto conv = new MilesToMetersConverter(new MetersToMilesConverter());
+    TINYTEST_EQUAL_EPSILON(conv->convert(6.66), 6.66);
 
+    return 1;
+}
 
 TINYTEST_START_SUITE(Convert);
 
@@ -285,6 +291,8 @@ TINYTEST_ADD_TEST(testFactoryMilesToMeters);
 TINYTEST_ADD_TEST(testFactoryMetersToMiles);
 TINYTEST_ADD_TEST(testFactoryFahrenheitToCelsius);
 TINYTEST_ADD_TEST(testFactoryCelsiusToFahrenheit);
+
+TINYTEST_ADD_TEST(testDecorator);
 
 TINYTEST_END_SUITE();
 

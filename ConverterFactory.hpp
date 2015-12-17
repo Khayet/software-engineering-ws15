@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include <map>
+#include "Condecorator.hpp"
 #include "DollarToEuroConverter.hpp"
 #include "EuroToDollarConverter.hpp"
 #include "EuroToYenConverter.hpp"

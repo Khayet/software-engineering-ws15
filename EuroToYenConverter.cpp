@@ -3,7 +3,7 @@
 #include <string>
 
 double EuroToYenConverter::convert(const double inputEuro) const{
-  return inputEuro*133.014554;
+  return Condecorator::convert(inputEuro*133.014554);
 }
 
 std::string EuroToYenConverter::toString() const{

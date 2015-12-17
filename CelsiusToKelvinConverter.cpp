@@ -3,7 +3,7 @@
 #include <string>
 
 double CelsiusToKelvinConverter::convert(const double inputCelsius) const{
-  return inputCelsius + 273.15;
+  return Condecorator::convert(inputCelsius + 273.15);
 }
 
 std::string CelsiusToKelvinConverter::toString() const{

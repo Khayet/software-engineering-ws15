@@ -6,7 +6,7 @@
  *Out: Euro value of input dollars as of 9.10.15
  */
 double DollarToEuroConverter::convert(const double inputDollars) const{
-  return inputDollars*0.91;
+  return Condecorator::convert(inputDollars*0.91);
 }
 
 std::string DollarToEuroConverter::toString() const{

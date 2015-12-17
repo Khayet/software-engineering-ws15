@@ -3,7 +3,7 @@
 #include <string>
 
 double FahrenheitToCelsiusConverter::convert(const double inputFahrenheit) const{
-  return (inputFahrenheit-32.0) * (5.0/9.0);
+  return Condecorator::convert((inputFahrenheit-32.0) * (5.0/9.0));
 }
 
 std::string FahrenheitToCelsiusConverter::toString() const{

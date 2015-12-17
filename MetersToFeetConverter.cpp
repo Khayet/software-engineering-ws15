@@ -3,7 +3,7 @@
 #include <string>
 
 double MetersToFeetConverter::convert(const double inputMeters) const {
-  return inputMeters*3.28084;
+  return Condecorator::convert(inputMeters*3.28084);
 }
 
 std::string MetersToFeetConverter::toString() const {
