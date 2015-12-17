@@ -8,6 +8,10 @@ class Inversion : public Condecorator
 public:
     Inversion(UnitConverter* unicon) : Condecorator{unicon} {}
 
+    virtual UnitConverter* clone() const {
+        return unit_ptr->clone();
+    }
+
     double convert(const double inValue) const {
         return inValue / (unit_ptr->convert(1.0));
     }
