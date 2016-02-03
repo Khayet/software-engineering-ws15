@@ -17,8 +17,14 @@ public:
     }
 
     virtual std::string toString() const {
-        if (unit_ptr == nullptr) {
-            return "ERROR Inversion::toString(): Missing unit_ptr.";
+        try {
+            if (unit_ptr == nullptr) {
+                throw std::runtime_error;
+            // return "ERROR Inversion::toString(): Missing unit_ptr.";
+            }
+        }
+        catch(std::exception& e) {
+            std::cout << e.what() << "\n";
         }
         return unit_ptr->toString();
     }
